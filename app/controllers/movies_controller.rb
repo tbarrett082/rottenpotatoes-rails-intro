@@ -11,10 +11,13 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @header_color = 'th'
     if params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
+      @header_color = 'th.hilite'
     elsif params[:sort_by] == 'date'
       @movies = Movie.all.order(release_date: :asc)
+      @header_color = 'th.hilite'
     end
   end
   
