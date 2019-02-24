@@ -11,19 +11,13 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+    if params[:sort_by] =='title'
+      @movies = Movie.all.order(title: :asc)
+    elsif params[:sort_by] == 'date'
+      @movies = Movie.all.order(release_date: :asc)
+    end
   end
   
-  def sort_by
-    if params[:id] == 'title_header'
-      @movies = Movie.all.order(title: :asc)    
-    elsif params[:id] == 'release_date_header'
-      @movies = Movie.all.order(release_date: :asc)
-    else
-      flash[:notice] = "This didn't work"
-    end      
-  end
-
   def new
     # default: render 'new' template
   end
