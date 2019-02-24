@@ -15,7 +15,11 @@ class MoviesController < ApplicationController
   end
   
   def sort_by
-      
+    if params[:id] == 'title_header'
+      @movies = Movie.order(title: :asc)    
+    elsif params[:id] == 'release_date_header'
+      @movies = Movie.order(release_date: :asc)
+    end      
   end
 
   def new
