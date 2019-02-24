@@ -14,8 +14,8 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
   
-  def sort
-  
+  def sort_by
+      
   end
 
   def new
