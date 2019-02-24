@@ -13,6 +13,10 @@ class MoviesController < ApplicationController
   def index
     @movies = Movie.all
   end
+  
+  def sort
+  
+  end
 
   def new
     # default: render 'new' template
