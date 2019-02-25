@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @header_color = 'th'
     if params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @header_color = 'th.hilite'
