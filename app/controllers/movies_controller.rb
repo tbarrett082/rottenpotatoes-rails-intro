@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @title_header = 'th.hilite'
     if params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header = 'th.hilite'
