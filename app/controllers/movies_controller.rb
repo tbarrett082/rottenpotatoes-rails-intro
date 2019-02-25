@@ -17,6 +17,8 @@ class MoviesController < ApplicationController
     elsif params[:sort_by] == 'date'
       @movies = Movie.all.order(release_date: :asc)
       @header_color = 'hilite'
+    else 
+      @movies = Movie.all
     end
   end
   
