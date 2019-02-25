@@ -4,7 +4,6 @@ class Movie < ActiveRecord::Base
     self.all do |p|
       rateList << p.rating
     end
-    rateList = Set[rateList]
     return rateList 
   end   
 end
