@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
       session[:ratings] = params[:ratings]
     elsif !(params[:ratings].blank?)
       rate_params = params[:ratings].keys
-      @movies = Movie.where(rating: session[:ratings].keys)
+      @movies = Movie.where(rating: params[:ratings].keys)
     elsif !(session.key?(:sort_by))
       session[:sort_by] = params[:sort_by]
     elsif params[:sort_by] =='title'
