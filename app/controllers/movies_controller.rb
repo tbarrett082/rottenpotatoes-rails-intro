@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where(rating: session[:ratings].keys)
     elsif !(session.key?(:sort_by))
       session[:sort_by] = params[:sort_by]
-    elsif session[:sort_by] =='title'
+    elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
     elsif params[:sort_by] == 'date'
