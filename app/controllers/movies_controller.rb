@@ -13,9 +13,12 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.defineRatings
     @movies = []
-    @rate_params = params[:ratings]
-    if !(@rate_params.empty?)
-      @movies = Movie.all
+    if (params.has_key?(:ratings))
+      rate_params = params[:ratings]
+      rate_params.each do |key|
+        rated_movies = Movie.where(rating: key)
+        @movies << rated_movies
+      end
     elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
