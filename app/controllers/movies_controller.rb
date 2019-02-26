@@ -20,16 +20,13 @@ class MoviesController < ApplicationController
     elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
-      session[:movies] = @movies
-      session[:color] = @title_header_color
+      session[:sort_by] = params[:sort_by]
     elsif params[:sort_by] == 'date'
       @movies = Movie.all.order(release_date: :asc)
       @release_header_color = 'hilite'
-      session[:movies] = @movies
-      session[:color] = @release_header_color
+      session[:sort_by] = params[:sort_by]
     else 
       @movies = Movie.all
-      session[:movies] = @movies
     end
   end
   
