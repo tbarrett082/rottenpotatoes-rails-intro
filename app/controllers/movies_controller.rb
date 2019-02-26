@@ -13,8 +13,8 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = Movie.defineRatings
     @movies = []
-    if !(params[:ratings].empty?)
-      for params[:ratings].each do |key|
+    if !((params[:ratings]).empty?)
+      for (params[:ratings]).each do |key|
         @rated_movies = Movie.where(rating: key)
         @movies << @rated_movies
       end
