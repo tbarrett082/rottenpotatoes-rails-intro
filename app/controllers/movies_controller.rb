@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     if !(params[:ratings].blank?)
       rate_params = params[:ratings].keys
       @movies = Movie.where(rating: params[:ratings].keys)
-      session[params[:ratings])
+      session[params[:ratings]]
     elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
