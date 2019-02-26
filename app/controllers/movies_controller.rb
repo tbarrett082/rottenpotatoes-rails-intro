@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
     @movies = []
     @rate_params = params[:ratings]
     if !(@rate_params.empty?)
-      flash[:notice] = 'The parameters is not empty'
+      @movies = Movie.all
     elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
