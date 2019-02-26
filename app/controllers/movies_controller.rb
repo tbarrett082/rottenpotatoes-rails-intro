@@ -12,16 +12,17 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = Movie.defineRatings
-    if !(session[:ratings].blank?)
-      @movies = Movie.where(rating: session[:ratings].keys)
-    elsif !(params[:ratings].blank?)
-      rate_params = params[:ratings].keys
+    if !(session.key?(:ratings))
       @movies = Movie.where(rating: params[:ratings].keys)
       session[:ratings] = params[:ratings]
-    elsif params[:sort_by] =='title'
+    elsif !(params[:ratings].blank?)
+      rate_params = params[:ratings].keys
+      @movies = Movie.where(rating: session[:ratings].keys)
+    elsif !(session.key?(:sort_by))
+      session[:sort_by] = params[:sort_by]
+    elsif session[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
-      session[:sort_by] = params[:sort_by]
     elsif params[:sort_by] == 'date'
       @movies = Movie.all.order(release_date: :asc)
       @release_header_color = 'hilite'
