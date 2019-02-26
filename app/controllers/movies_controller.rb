@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     @rate_params = params[:ratings]
     if !(@rate_params.empty?)
       for @rate_params.each do |key|
-        @rated_movies = Movie.where(rating: key)
+        @rated_movies = Movie.where("rating = '#{key}'")
         @movies << @rated_movies
       end
     elsif params[:sort_by] =='title'
