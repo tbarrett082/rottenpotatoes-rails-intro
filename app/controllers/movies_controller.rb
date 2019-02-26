@@ -14,7 +14,8 @@ class MoviesController < ApplicationController
     @all_ratings = Movie.defineRatings
     if !(params[:ratings].empty?)
       for params[:ratings].each do |key|
-        @movies.push(Movie.where(rating: key))
+        @rated_movies = Movie.where(rating: key)
+        @movies.push(@rated_movies)
       end
     end
     if params[:sort_by] =='title'
