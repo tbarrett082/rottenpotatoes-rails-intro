@@ -15,9 +15,7 @@ class MoviesController < ApplicationController
     @movies = []
     if !(params[:ratings].blank?)
       rate_params = params[:ratings].keys
-      rate_params.each do |k|
-        @movies = Movie.where(rating: k)        
-      end
+      @movies = Movie.where(rating: params[:ratings.keys])        
     elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
