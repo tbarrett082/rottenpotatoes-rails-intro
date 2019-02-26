@@ -16,15 +16,21 @@ class MoviesController < ApplicationController
     if !(params[:ratings].blank?)
       rate_params = params[:ratings].keys
       @movies = Movie.where(rating: params[:ratings].keys)
-      session[params[:ratings]]
+      session[:ratings] = params[:ratings]
     elsif params[:sort_by] =='title'
       @movies = Movie.all.order(title: :asc)
       @title_header_color = 'hilite'
+      session[:movies] = @movies
+      session[:color] = @title_header_color
+      session[:
     elsif params[:sort_by] == 'date'
       @movies = Movie.all.order(release_date: :asc)
       @release_header_color = 'hilite'
+      session[:movies] = @movies
+      session[:color] = @release_header_color
     else 
       @movies = Movie.all
+      session[:movies] = @movies
     end
   end
   
