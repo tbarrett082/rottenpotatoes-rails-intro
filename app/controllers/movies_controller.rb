@@ -22,7 +22,6 @@ class MoviesController < ApplicationController
       @title_header_color = 'hilite'
       session[:movies] = @movies
       session[:color] = @title_header_color
-      session[:
     elsif params[:sort_by] == 'date'
       @movies = Movie.all.order(release_date: :asc)
       @release_header_color = 'hilite'
